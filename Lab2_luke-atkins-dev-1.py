@@ -32,22 +32,32 @@ def main():
     gratuities = [.15, 0.2]
     calculated_gratuities = []
 
+    # for grat in gratuities:
+    #     calculated_gratuities.append({
+    #         # f-string
+    #         "percent": f"{grat*100:.0f}%",
+    #         "dollar_amount": currency_format(total * grat),
+    #         "total": currency_format(total*(1+grat))
+    #     })
+    # for grat in calculated_gratuities:
+    #     percent = grat.get('percent')
+    #     dollar_amount = grat.get('dollar_amount')
+    #     print(f'{percent} Tip: {dollar_amount:>19}')
+    dollar_amount_strings = []
+    total_amount_strings = []
     for grat in gratuities:
-        calculated_gratuities.append({
-            "percent": f"{grat*100:.0f}%",
-            "dollar_amount": currency_format(total * grat),
-            "total": currency_format(total*(1+grat))
-        })
-        # print(f'{grat*100:.0f}% Tip:{currency_format(total*grat):>20}')
-    for grat in calculated_gratuities:
-        percent = grat.get('percent')
-        dollar_amount = grat.get('dollar_amount')
-        print(f'{percent} Tip: {dollar_amount:>19}')
+        percent = f"{grat*100:.0f}%"
+        dollar_amount = currency_format(total * grat)
+        total_str = currency_format(total*(1+grat))
+        dollar_amount_strings.append(f'{percent} Tip: {dollar_amount:>19}')
+        total_amount_strings.append(f'Total with {percent} Tip:{total_str:>9}')
+    print('\n'.join(dollar_amount_strings))
     print(f"Total:  {currency_format(total):>20}")
-    for grat in calculated_gratuities:
-        percent = grat.get('percent')
-        total = grat.get('total')
-        print(f'Total with {percent} Tip:{total:>9}')
+    print('\n'.join(total_amount_strings))
+    # for grat in calculated_gratuities:
+    #     percent = grat.get('percent')
+    #     total = grat.get('total')
+    #     print(f'Total with {percent} Tip:{total:>9}')
     input("Calculate another total (y/n)?: ") == "y" and main()
     
 if __name__ == "__main__":
