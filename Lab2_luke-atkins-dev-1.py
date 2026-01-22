@@ -31,7 +31,7 @@ def main():
     total = force_input_type("Enter bill total: ", "Please enter a valid number", float)
     print(f"Total:  {currency_format(total):>20}")
     print(f'15% Tip:{currency_format(total*0.15):>20}')
-    print(f'20% Tip:{currency_format(total*0.15):>20}')
+    print(f'20% Tip:{currency_format(total*0.2):>20}')
     input("Calculate another total (y/n)?: ") == "y" and main()
     
 if __name__ == "__main__":
