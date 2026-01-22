@@ -1,5 +1,5 @@
 """
-Purpose: This program calculates at tip percentage based off the bill total entered by the user
+Purpose: This program calculates a tip percentage based off the bill total entered by the user
 Starter Code: No starter code used
 Author: Luke Atkins
 Date: 1/21/2026
