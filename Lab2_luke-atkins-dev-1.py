@@ -29,9 +29,25 @@ def currency_format(amount: float):
 def main():
     print("Suggested Tip Calculator")
     total = force_input_type("Enter bill total: ", "Please enter a valid number", float)
+    gratuities = [.15, 0.2]
+    calculated_gratuities = []
+
+    for grat in gratuities:
+        calculated_gratuities.append({
+            "percent": f"{grat*100:.0f}%",
+            "dollar_amount": currency_format(total * grat),
+            "total": currency_format(total*(1+grat))
+        })
+        # print(f'{grat*100:.0f}% Tip:{currency_format(total*grat):>20}')
+    for grat in calculated_gratuities:
+        percent = grat.get('percent')
+        dollar_amount = grat.get('dollar_amount')
+        print(f'{percent} Tip: {dollar_amount:>19}')
     print(f"Total:  {currency_format(total):>20}")
-    print(f'15% Tip:{currency_format(total*0.15):>20}')
-    print(f'20% Tip:{currency_format(total*0.2):>20}')
+    for grat in calculated_gratuities:
+        percent = grat.get('percent')
+        total = grat.get('total')
+        print(f'Total with {percent} Tip:{total:>9}')
     input("Calculate another total (y/n)?: ") == "y" and main()
     
 if __name__ == "__main__":
